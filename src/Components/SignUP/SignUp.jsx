@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../mylogo.png";
 
 function SignUp() {
   const [form, setForm] = useState({

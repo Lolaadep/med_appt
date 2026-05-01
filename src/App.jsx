@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from './Components/Navbar/Navbar'
 import SignUp from './Components/SignUP/SignUp'
-import LandingPage from './Components/Landing_Page/LandingPage' // 👈 add this
+import LandingPage from './Components/Landing_Page/LandingPage' 
 function App() {
   return (
     <div className="App">
