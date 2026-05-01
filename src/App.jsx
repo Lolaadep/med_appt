@@ -1,27 +1,85 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Navbar from './Components/Navbar/Navbar'
-import LandingPage from './Components/Landing_Page/LandingPage' 
-import SignUp from './Components/SignUP/SignUp'
-import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation';
+import React, { useState } from 'react';
 
+const AppointmentForm = ({ doctorName, doctorSpeciality, onSubmit }) => {
+  const [name, setName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
 
-function App() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    onSubmit({
+      name,
+      phoneNumber,
+      date,
+      time
+    });
+
+    setName('');
+    setPhoneNumber('');
+    setDate('');
+    setTime('');
+  };
+
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Navbar/>
+    <form className="appointment-form" onSubmit={handleSubmit}>
 
-        <Routes>
-          <Route path="/" element={<LandingPage />} /> {/* 👈 add this */}
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/instant-consultation" element={<InstantConsultation />} /> 
-        </Routes>
+      <h2>Book Appointment</h2>
 
-      </BrowserRouter>
-    </div>
-  )
-}
+      <p>Doctor: {doctorName}</p>
+      <p>Speciality: {doctorSpeciality}</p>
 
-export default App
+      {/* NAME */}
+      <div className="form-group">
+        <label>Name</label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+      </div>
+
+      {/* PHONE */}
+      <div className="form-group">
+        <label>Phone Number</label>
+        <input
+          type="tel"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          required
+        />
+      </div>
+
+      {/* DATE (REQUIRED FIX) */}
+      <div className="form-group">
+        <label>Date</label>
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+        />
+      </div>
+
+      {/* TIME (REQUIRED FIX) */}
+      <div className="form-group">
+        <label>Time</label>
+        <input
+          type="time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          required
+        />
+      </div>
+
+      <button type="submit">
+        Book Appointment
+      </button>
+
+    </form>
+  );
+};
+
+export default AppointmentForm;
