@@ -4,25 +4,7 @@ import logo from "../mylogo.png";
 import "./Login.css";
 
 function Login() {
-  const [form, setForm] = useState({
-    role: "",
-    email: "",
-    password: "",
-  });
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-
-    setForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    alert("Login submitted!");
-  }
+  
 
   return (
     <>
