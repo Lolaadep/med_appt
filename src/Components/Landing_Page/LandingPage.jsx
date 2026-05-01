@@ -1,4 +1,4 @@
-import './LandingPage.css'   // only if you have a CSS file
+import './SignUp.css'   // only if you have a CSS file
 import { Link } from 'react-router-dom'
 
 function LandingPage() {
