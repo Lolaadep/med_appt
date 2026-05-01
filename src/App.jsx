@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from './Components/Navbar/Navbar'
-import SignUP from './Components/SignU/SignUP'
+import SignUP from './Components/SignUP/SignUp'
 import LandingPage from './Components/Landing_Page/LandingPage' // 👈 add this
 function App() {
   return (
