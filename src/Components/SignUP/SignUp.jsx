@@ -1,5 +1,7 @@
-import "./SignUp.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../mylogo.png";
+import "./SignUp.css";
 
 function SignUp() {
   const [form, setForm] = useState({
@@ -35,7 +37,30 @@ function SignUp() {
 
   return (
     <>
-      <section className="signup-section">
+      {/* HEADER */}
+      <section id="section-header">
+        <header className="site-header">
+          <div className="header-container">
+
+            <div className="logo">
+              <img src={logo} alt="StayHealthy Logo" />
+            </div>
+
+            <nav className="main-nav">
+              <Link to="/" className="nav-link">Home</Link>
+              <Link to="#" className="nav-link">Appointments</Link>
+              <Link to="#" className="nav-link">Records</Link>
+              <Link to="#" className="nav-link">Reviews</Link>
+              <Link to="/signup" className="nav-link active">Sign Up</Link>
+              <Link to="/login" className="nav-link">Log In</Link>
+            </nav>
+
+          </div>
+        </header>
+      </section>
+
+      {/* SIGNUP SECTION */}
+      <section id="section-signup" className="signup-section">
         <div className="signup-container">
           <div className="signup-card">
 
@@ -45,7 +70,7 @@ function SignUp() {
               <p>Join StayHealthy in seconds!</p>
             </div>
 
-            <form onSubmit={handleSubmit}>
+            <form className="signup-form" onSubmit={handleSubmit}>
 
               <select name="role" value={form.role} onChange={handleChange} required>
                 <option value="">Select Role</option>
