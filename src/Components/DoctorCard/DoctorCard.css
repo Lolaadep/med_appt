@@ -1,0 +1,38 @@
+.doctor-card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px auto;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+  background: #fff;
+}
+
+.doctor-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+}
+
+.doctor-image {
+  font-size: 40px;
+}
+
+.doctor-details h3 {
+  margin: 0;
+}
+
+.book-btn {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #066519;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-btn:hover {
+  background-color: #044a12;
+}
