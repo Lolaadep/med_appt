@@ -1,163 +1,78 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import logo from "../mylogo.png";
-import "./SignUp.css";
+// Following code has been commented with appropriate comments for your reference.
+import React, { useState } from 'react';
+import './SignUp.css'
+import { Link, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../config';
 
-function SignUp() {
-  const [form, setForm] = useState({
-    role: "",
-    firstName: "",
-    surname: "",
-    email: "",
-    phone: "",
-    password: "",
-    confirmPassword: "",
-    terms: false,
-  });
+// Function component for Sign Up form
+const SignUp = () => {
+    // State variables using useState hook
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+    const [showerr, setShowerr] = useState(''); // State to show error messages
+    const navigate = useNavigate(); // Navigation hook from react-router
 
-  function handleChange(e) {
-    const { name, value, type, checked } = e.target;
+    // Function to handle form submission
+    const register = async (e) => {
+        e.preventDefault(); // Prevent default form submission
 
-    setForm((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  }
+        // API Call to register user
+        const response = await fetch(`${API_URL}/api/auth/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                password: password,
+                phone: phone,
+            }),
+        });
 
-  function handleSubmit(e) {
-    e.preventDefault();
+        const json = await response.json(); // Parse the response JSON
 
-    if (form.password !== form.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
+        if (json.authtoken) {
+            // Store user data in session storage
+            sessionStorage.setItem("auth-token", json.authtoken);
+            sessionStorage.setItem("name", name);
+            sessionStorage.setItem("phone", phone);
+            sessionStorage.setItem("email", email);
 
-    alert("Account created successfully!");
-  }
+            // Redirect user to home page
+            navigate("/");
+            window.location.reload(); // Refresh the page
+        } else {
+            if (json.errors) {
+                for (const error of json.errors) {
+                    setShowerr(error.msg); // Show error messages
+                }
+            } else {
+                setShowerr(json.error);
+            }
+        }
+    };
 
-  return (
-    <>
-      {/* HEADER */}
-      <section id="section-header">
-        <header className="site-header">
-          <div className="header-container">
-
-            <div className="logo">
-              <img src={logo} alt="StayHealthy Logo" />
+    // JSX to render the Sign Up form
+    return (
+        <div className="container" style={{marginTop:'5%'}}>
+            <div className="signup-grid">
+                <div className="signup-form">
+                    <form method="POST" onSubmit={register}>
+                        <div className="form-group">
+                            <label htmlFor="email">Email</label>
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email" className="form-control" placeholder="Enter your email" aria-describedby="helpId" />
+                            {showerr && <div className="err" style={{ color: 'red' }}>{showerr}</div>}
+                        </div>
+                        {/* Apply similar logic for other form elements like name, phone, and password to capture user information */}
+                    </form>
+                </div>
             </div>
-
-            <nav className="main-nav">
-              <Link to="/" className="nav-link">Home</Link>
-              <Link to="#" className="nav-link">Appointments</Link>
-              <Link to="#" className="nav-link">Records</Link>
-              <Link to="#" className="nav-link">Reviews</Link>
-              <Link to="/signup" className="nav-link active">Sign Up</Link>
-              <Link to="/login" className="nav-link">Log In</Link>
-            </nav>
-
-          </div>
-        </header>
-      </section>
-
-      {/* SIGNUP SECTION */}
-      <section id="section-signup" className="signup-section">
-        <div className="signup-container">
-          <div className="signup-card">
-
-            <div className="card-header">
-              <img src={logo} alt="StayHealthy Logo" className="card-logo" />
-              <h1>Sign Up</h1>
-              <p>Join StayHealthy in seconds!</p>
-            </div>
-
-            <form className="signup-form" onSubmit={handleSubmit}>
-
-              <select name="role" value={form.role} onChange={handleChange} required>
-                <option value="">Select Role</option>
-                <option value="Admin">Admin</option>
-                <option value="Patient">Patient</option>
-                <option value="Doctor">Doctor</option>
-              </select>
-
-              <input
-                name="firstName"
-                placeholder="First Name"
-                value={form.firstName}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                name="surname"
-                placeholder="Surname"
-                value={form.surname}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                name="email"
-                type="email"
-                placeholder="Email"
-                value={form.email}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                name="phone"
-                type="tel"
-                placeholder="Phone Number"
-                value={form.phone}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                name="password"
-                type="password"
-                placeholder="Password"
-                value={form.password}
-                onChange={handleChange}
-                required
-              />
-
-              <input
-                name="confirmPassword"
-                type="password"
-                placeholder="Confirm Password"
-                value={form.confirmPassword}
-                onChange={handleChange}
-                required
-              />
-
-              <label>
-                <input
-                  type="checkbox"
-                  name="terms"
-                  checked={form.terms}
-                  onChange={handleChange}
-                  required
-                />
-                I agree to the Terms and Conditions
-              </label>
-
-              <button type="submit">
-                Create Account
-              </button>
-
-              <p>
-                Already have an account?{" "}
-                <Link to="/login">Log In</Link>
-              </p>
-
-            </form>
-
-          </div>
         </div>
-      </section>
-    </>
-  );
+        /* Note: Sign up role is not stored in the database. Additional logic can be implemented for this based on your React code. */
+    );
 }
 
-export default SignUp;
+export default SignUp; // Export the Sign_Up component for use in other components
