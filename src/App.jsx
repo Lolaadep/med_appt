@@ -1,45 +1,30 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import Navbar from './Components/Navbar/Navbar';
-import LandingPage from './Components/Landing_Page/LandingPage';
-import SignUp from './Components/SignUP/SignUp';
-import Login from './Components/Login/Login';
-import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation';
-import BookingConsultation from './Components/BookingConsultation/BookingConsultation';
+import Navbar from "./components/Navbar";
+import SignUp from "./pages/Sign_Up";
+import Login from "./pages/Login";
+import FindDoctorSearch from "./pages/FindDoctorSearch";
 
 function App() {
+  const [message, setMessage] = useState("");
+
+  const showNotification = (msg) => {
+    setMessage(msg);
+    setTimeout(() => setMessage(""), 3000);
+  };
+
   return (
-    <div className="App">
+    <div>
+      <Navbar />
 
-      {/* ROUTER WRAPPER */}
-      <BrowserRouter>
+      {message && <p style={{ textAlign: "center" }}>{message}</p>}
 
-        {/* NAVBAR ALWAYS VISIBLE */}
-        <Navbar />
-
-        {/* ALL ROUTES */}
-        <Routes>
-
-          {/* HOME PAGE */}
-          <Route path="/" element={<LandingPage />} />
-
-          {/* SIGN UP PAGE */}
-          <Route path="/signup" element={<SignUp />} />
-
-          {/* LOGIN PAGE */}
-          <Route path="/login" element={<Login />} />
-
-          {/* INSTANT CONSULTATION PAGE */}
-          <Route path="/instant-consultation" element={<InstantConsultation />} />
-
-          {/* BOOKING CONSULTATION PAGE */}
-          <Route path="/booking" element={<BookingConsultation />} />
-
-        </Routes>
-
-      </BrowserRouter>
-
+      <Routes>
+        <Route path="/" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/search" element={<FindDoctorSearch />} />
+      </Routes>
     </div>
   );
 }
