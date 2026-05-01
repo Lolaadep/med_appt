@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Navbar from './Components/Navbar/Navbar'
 import LandingPage from './Components/Landing_Page/LandingPage' 
 import SignUp from './Components/SignUP/SignUp'
+import InstantConsultation from './Components/InstantConsultationBooking/InstantConsultation';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/" element={<LandingPage />} /> {/* 👈 add this */}
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/instant-consultation" element={<InstantConsultation />} />
         </Routes>
 
       </BrowserRouter>
