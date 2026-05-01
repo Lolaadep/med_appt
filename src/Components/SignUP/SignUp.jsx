@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import './SignUp.css'
 import { Link, useNavigate } from 'react-router-dom';
-import { API_URL } from '../../../config';
+const API_URL = "https://api.npoint.io/9a5543d36f1460da2f63";
+//import { API_URL } from '../../../config';
 
 // Function component for Sign Up form
 const SignUp = () => {
