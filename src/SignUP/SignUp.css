@@ -1,0 +1,379 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #066519;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input,
+select,
+button {
+  font-family: inherit;
+}
+
+.site-header {
+  border-bottom: 2px solid #066519;
+  background-color: #ffffff;
+  width: 100%;
+}
+.header-container {
+  max-width: 1440px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5px;
+  max-height: 80px;
+}
+.logo {
+    margin-top: 25px;
+  display: flex;
+  align-items: center;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-left: -50px; /* Adjusting to match Figma's slight left offset */
+  }
+.logo img {
+  height: 150px;
+  width: auto;
+  object-fit: contain;
+}
+.main-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.nav-link {
+  color: #066519;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: 2px solid #066519;
+  border-radius: 25px;
+  transition: background-color 0.2s ease;
+  text-align: center;
+}
+.nav-link:hover {
+  background-color: #f0f0f0;
+}
+.nav-link.active {
+  background-color: #e8e8e8;
+}
+
+@media (max-width: 992px) {
+  .header-container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+  .main-nav {
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  .nav-link {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+.signup-section {
+  padding: 60px 20px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 80px);
+}
+.signup-container {
+  width: 100%;
+  max-width: 628px;
+}
+.signup-card {
+  background-color: #f8f8f8;
+  border: 2px solid #066519;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 0px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-header {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-logo {
+  width: auto;
+  height: 120px;
+  margin-bottom: 10px;
+  
+}
+.card-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #066519;
+  margin: 0px 0px 10px 0px;
+  margin-bottom: 20px;
+
+
+}
+.card-subtitle {
+  font-size: 16px;
+  color: #066519;
+  margin: 0;
+}
+.signup-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-group label {
+  font-weight: 700;
+  color: #066519;
+  font-size: 16px;
+}
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #066519;
+  height: 56px;
+  width: 100%;
+}
+.form-control {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 0 20px;
+  font-size: 16px;
+  color: #000000;
+}
+.form-control::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+.form-control:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px #066519;
+}
+
+/* Select specific styles */
+select.form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 50px;
+}
+select.form-control:invalid {
+  color: rgba(0, 0, 0, 0.5);
+}
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url('${ASSET_PATH}/d62e49071a8b99faff88deb45d242dcd829528ac.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+}
+
+/* Phone specific styles */
+.phone-wrapper {
+  padding-left: 0;
+}
+.country-code {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 15px;
+  border-right: 1px solid #066519;
+  height: 100%;
+  cursor: pointer;
+  background-color: #f8f8f8;
+}
+.flag-icon {
+  width: 24px;
+  height: auto;
+  object-fit: contain;
+}
+.dropdown-icon {
+  width: 12px;
+  height: auto;
+  object-fit: contain;
+}
+.phone-input {
+  padding-left: 15px;
+}
+
+/* Password specific styles */
+.toggle-password {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.visibility-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Checkbox styles */
+.terms-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 16px;
+  user-select: none;
+  color: #000000;
+}
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  background-color: #ffffff;
+  border: 1px solid #066519;
+}
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #066519;
+}
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+.checkbox-container .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.terms-text strong {
+  color: #066519;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: #066519;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 18px 40px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  width: fit-content;
+  margin: 10px auto 0;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease;
+}
+.submit-btn:hover {
+  background-color: #044a12;
+}
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* Login Link */
+.login-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 16px;
+  color: #000000;
+}
+.login-link a {
+  color: #066519;
+  text-decoration: none;
+}
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .signup-card {
+    padding: 40px 20px;
+    border-width: 1px;
+  }
+  .card-title {
+    font-size: 28px;
+  }
+  .form-group label {
+    font-size: 14px;
+  }
+  .form-control {
+    font-size: 14px;
+  }
+  .submit-btn {
+    width: 100%;
+    padding: 15px 20px;
+  }
+  .terms-text {
+    font-size: 14px;
+  }
+}

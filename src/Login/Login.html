@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">  
+    <link rel="stylesheet" href="Login.css">
+
+</head>
+<body>
+<section id="section-header">
+  <header class="site-header container">
+    <a href="#" class="logo">
+      <img
+        src="mylogo.png"
+        alt="StayHealthy Logo"
+      />
+    </a>
+    <nav class="main-nav">
+      <a href="../Landing_Page/LandingPage.html" class="nav-link active">Home</a>
+      <a href="#" class="nav-link">Appointments</a>
+      <a href="#" class="nav-link">Records</a>
+      <a href="#" class="nav-link">Reviews</a>
+      <a href="../SignUP/SignUp.html" class="nav-link">Sign Up</a>
+      <a href="../Login/Login.html" class="nav-link btn-login">Log In</a>
+    </nav>
+  </header>
+</section>
+
+<section id="section-login">
+  <div class="login-container container">
+    <div class="login-card">
+      <div class="card-header">
+        <img
+          src="mylogo.png"
+          alt="StayHealthy Logo"
+          class="card-logo"
+        />
+        <h1 class="card-title">Log In</h1>
+        <p class="card-subtitle">Good to see you again, Log In to continue.</p>
+      </div>
+
+      <form class="login-form">
+        <div class="form-group">
+          <label for="role">User</label>
+          <div class="input-wrapper">
+            <select id="role" name="role" required>
+              <option value="" disabled selected hidden>Select Role</option>
+              <option value="patient">Patient</option>
+              <option value="doctor">Doctor</option>
+              <option value="admin">Admin</option>
+            </select>
+            
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <div class="input-wrapper">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your Email Address"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-wrapper">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your Password"
+              required
+            />
+            <button
+              type="button"
+              class="btn-toggle-password"
+              aria-label="Toggle password visibility"
+            >
+              
+            </button>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <a href="#" class="forgot-password">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn-submit">Confirm Details</button>
+
+        <p class="signup-prompt">
+          <span class="text-dark">Don’t have an account yet?</span>
+          <a href="#" class="link-signup">Sign Up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+</body>

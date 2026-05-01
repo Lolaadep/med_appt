@@ -1,0 +1,1 @@
+StayHealthy is a healthcare web application designed to help users easily access medical services in one place.

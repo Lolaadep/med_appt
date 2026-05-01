@@ -1,0 +1,110 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #066519;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.site-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-bottom: 1px solid #066519;
+  background-color: #ffffff;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: -50px; /* Adjusting to match Figma's slight left offset */
+}
+
+.logo {
+  margin-top: 25px;
+  height: 150px;
+  width: auto;
+  object-fit: contain;
+}
+
+.main-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border: 2px solid #066519;
+  border-radius: 25px;
+  color: #066519;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-btn:hover {
+  background-color: #f0f8f2;
+}
+
+.nav-btn.active {
+  background-color: #e8e8e8;
+  border-radius: 50px;
+}
+
+@media (max-width: 1024px) {
+  .main-nav {
+    gap: 10px;
+  }
+  .nav-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 850px) {
+  .site-header {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    gap: 20px;
+  }
+  .logo-container {
+    margin-left: 0;
+  }
+  .main-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
